@@ -1,0 +1,92 @@
+.header {
+  position: relative;
+
+  width: 620px; /* ⭐ rộng hơn để đủ 1 dòng */
+
+  margin: -50px auto 0px auto; /* kéo header lên trên */
+
+  text-align: center;
+}
+
+/* container chữ */
+.header-text {
+  position: relative;
+  z-index: 2;
+}
+
+/* dòng 1 */
+.title-top {
+  font-size: 28px;
+  font-weight: bold;
+
+  margin-bottom: 2px;
+
+  color: #ffffff;
+
+  white-space: nowrap; /* ⭐ không cho xuống dòng */
+
+  text-shadow:
+    0 0 5px #ff4fd8,
+    0 0 10px #ff4fd8;
+}
+
+/* khung chữ chạy */
+.title-bottom-wrapper {
+  width: 100%;
+  overflow: hidden;
+}
+
+/* dòng 2 */
+.title-bottom {
+  display: inline-block;
+
+  font-size: 28px;
+  font-weight: bold;
+
+  white-space: nowrap;
+
+  color: #ffd700;
+
+  animation: marquee 8s linear infinite;
+}
+
+/* chữ chạy */
+@keyframes marquee {
+  from {
+    transform: translateX(100%);
+  }
+
+  to {
+    transform: translateX(-100%);
+  }
+}
+
+/* khung chấm hồng */
+.header-dots {
+  position: absolute;
+
+  top: -8px;
+  left: -8px;
+  right: -8px;
+  bottom: -8px;
+
+  border-radius: 10px;
+
+  pointer-events: none;
+
+  background: radial-gradient(circle, #ff4fd8 2px, transparent 3px);
+
+  background-size: 18px 18px;
+
+  animation: dotsMove 6s linear infinite;
+}
+
+@keyframes dotsMove {
+  from {
+    background-position: 0 0;
+  }
+
+  to {
+    background-position: 18px 18px;
+  }
+}
