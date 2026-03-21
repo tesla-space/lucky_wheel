@@ -22,13 +22,15 @@ export default function App() {
       {/* WHEEL */}
       <div className="wheel-area">
         <img
-          src="/public/images/left-girl.png"
+          src="/images/left-girl.png"
           className={`character left ${spinning ? "spin" : ""}`}
+          alt="Left Girl"
         />
 
         <img
-          src="/public/images/right-girl.png"
+          src="/images/right-girl.png"
           className={`character right ${spinning ? "spin" : ""}`}
+          alt="Right Girl"
         />
         <Pointer />
 
