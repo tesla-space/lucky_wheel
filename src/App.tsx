@@ -1,35 +1,3 @@
-// import WheelSVG from "./components/wheel/WheelSVG";
-// import Pointer from "./components/pointer/Pointer";
-// import InnerWheel from "./components/innerWheel/InnerWheel";
-// import LedRing from "./components/ledRing/LedRing";
-
-// import useSpinWheel from "./hooks/useSpinWheel";
-
-// import "./App.css";
-
-// export default function App() {
-//   const { rotation, number, spinning, spin } = useSpinWheel();
-
-//   return (
-//     <div className="app">
-//       <Pointer />
-
-//       <LedRing />
-
-//       <div
-//         style={{
-//           transform: `rotate(${rotation}deg)`,
-//           transition: "transform 7s cubic-bezier(0.22, 1, 0.36, 1)",
-//         }}
-//       >
-//         <WheelSVG />
-//       </div>
-
-//       <InnerWheel number={number} spinning={spinning} onSpin={spin} />
-//     </div>
-//   );
-// }
-
 import WheelSVG from "./components/wheel/WheelSVG";
 import Pointer from "./components/pointer/Pointer";
 import InnerWheel from "./components/innerWheel/InnerWheel";
@@ -53,6 +21,15 @@ export default function App() {
 
       {/* WHEEL */}
       <div className="wheel-area">
+        <img
+          src="../public/images/left-girl.png"
+          className={`character left ${spinning ? "spin" : ""}`}
+        />
+
+        <img
+          src="../public/images/right-girl.png"
+          className={`character right ${spinning ? "spin" : ""}`}
+        />
         <Pointer />
 
         <LedRing />
@@ -61,7 +38,9 @@ export default function App() {
           className="wheel-rotation"
           style={{
             transform: `rotate(${rotation}deg)`,
-            transition: "transform 7s cubic-bezier(0.22, 1, 0.36, 1)",
+            transition: spinning
+              ? "transform 10s cubic-bezier(0.22, 1, 0.36, 1)"
+              : "none",
           }}
         >
           <WheelSVG />

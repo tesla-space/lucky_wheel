@@ -169,3 +169,97 @@ body {
   opacity: 1;
   transform: scale(1.15);
 }
+
+/* =============================
+   CHARACTER BASE
+============================= */
+.character {
+  position: absolute;
+  width: 200px;
+  z-index: 2;
+  pointer-events: none; /* không block click */
+  will-change: transform;
+}
+
+/* =============================
+   CHARACTER BASE
+============================= */
+.character {
+  position: absolute;
+  width: 200px;
+  z-index: 2;
+  pointer-events: none;
+  will-change: transform;
+  transition: transform 0.3s ease; /* giúp dừng mượt */
+}
+
+/* =============================
+   LEFT CHARACTER
+============================= */
+.character.left {
+  left: -180px;
+  transform: scaleX(-1);
+}
+
+/* =============================
+   RIGHT CHARACTER
+============================= */
+.character.right {
+  right: -180px;
+}
+
+/* =============================
+   BOUNCE NHẸ (rất subtle)
+============================= */
+
+/* RIGHT */
+@keyframes bounce-right {
+  0% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-5px);
+  } /* chỉ nhảy 4px thôi */
+  100% {
+    transform: translateY(0);
+  }
+}
+
+/* LEFT (giữ scaleX) */
+@keyframes bounce-left {
+  0% {
+    transform: scaleX(-1) translateY(0);
+  }
+  50% {
+    transform: scaleX(-1) translateY(-5px);
+  }
+  100% {
+    transform: scaleX(-1) translateY(0);
+  }
+}
+
+/* APPLY */
+.character.right.spin {
+  animation: bounce-right 0.8s ease-in-out infinite;
+}
+
+.character.left.spin {
+  animation: bounce-left 0.8s ease-in-out infinite;
+}
+
+/* =============================
+   RESPONSIVE
+============================= */
+@media (max-width: 768px) {
+  .character {
+    width: 90px;
+  }
+
+  .character.left {
+    left: -100px;
+  }
+
+  .character.right {
+    right: -100px;
+  }
+}
