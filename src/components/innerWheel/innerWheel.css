@@ -1,27 +1,21 @@
 .inner-wheel {
   position: absolute;
-  width: 110px;
-  height: 110px;
-
   border-radius: 50%;
   background: white;
-
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
-
   font-weight: bold;
   cursor: pointer;
-
   box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
 }
 
 .play {
-  font-size: 22px;
+  font-weight: bold;
 }
 
 .number {
-  font-size: 40px;
+  font-weight: bold;
   color: #333;
 }

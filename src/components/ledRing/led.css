@@ -1,7 +1,5 @@
 .led-container {
   position: absolute;
-  width: 400px;
-  height: 400px;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
@@ -9,21 +7,13 @@
 
 .led {
   position: absolute;
-
-  width: 10px;
-  height: 10px;
-
   border-radius: 50%;
-
   background: #ff4fd8;
-
   transform: translate(-50%, -50%);
-
   box-shadow:
     0 0 6px #ff4fd8,
     0 0 12px #ff4fd8,
     0 0 20px #ff4fd8;
-
   animation: blink 1s infinite alternate;
 }
 
@@ -33,5 +23,17 @@
   }
   100% {
     opacity: 0.3;
+  }
+}
+
+/* =============================
+   MOBILE RESPONSIVE
+============================= */
+@media (max-width: 768px) {
+  .led {
+    box-shadow:
+      0 0 2px #ff4fd8,
+      0 0 4px #ff4fd8,
+      0 0 8px #ff4fd8;
   }
 }

@@ -14,40 +14,43 @@ const prizes: Prize[] = [
   { label: "KHUYẾN KHÍCH", color: "#FF9800" },
 ];
 
-const size = 400;
-const center = size / 2;
-const radius = 180;
+type Props = {
+  wheelSize: number; // nhận từ App.tsx
+};
 
-function polarToCartesian(
-  centerX: number,
-  centerY: number,
-  r: number,
-  angleDeg: number,
-) {
-  const angleRad = (angleDeg * Math.PI) / 180;
+export default function WheelSVG({ wheelSize }: Props) {
+  const size = wheelSize;
+  const center = size / 2;
+  const radius = size / 2 - 20; // để path và text nằm gọn trong wheel
 
-  return {
-    x: centerX + r * Math.cos(angleRad),
-    y: centerY + r * Math.sin(angleRad),
-  };
-}
+  function polarToCartesian(
+    centerX: number,
+    centerY: number,
+    r: number,
+    angleDeg: number,
+  ) {
+    const angleRad = (angleDeg * Math.PI) / 180;
+    return {
+      x: centerX + r * Math.cos(angleRad),
+      y: centerY + r * Math.sin(angleRad),
+    };
+  }
 
-function describeArc(startAngle: number, endAngle: number) {
-  const start = polarToCartesian(center, center, radius, endAngle);
-  const end = polarToCartesian(center, center, radius, startAngle);
+  function describeArc(startAngle: number, endAngle: number) {
+    const start = polarToCartesian(center, center, radius, endAngle);
+    const end = polarToCartesian(center, center, radius, startAngle);
+    const largeArcFlag = endAngle - startAngle <= 180 ? "0" : "1";
 
-  const largeArcFlag = endAngle - startAngle <= 180 ? "0" : "1";
+    return `
+      M ${center} ${center}
+      L ${start.x} ${start.y}
+      A ${radius} ${radius} 0 ${largeArcFlag} 0 ${end.x} ${end.y}
+      Z
+    `;
+  }
 
-  return `
-    M ${center} ${center}
-    L ${start.x} ${start.y}
-    A ${radius} ${radius} 0 ${largeArcFlag} 0 ${end.x} ${end.y}
-    Z
-  `;
-}
-
-export default function WheelSVG() {
   const anglePerSector = 360 / prizes.length;
+  const fontSize = size <= 300 ? 12 : 16; // co theo wheelSize
 
   return (
     <div className="wheel-container">
@@ -60,9 +63,7 @@ export default function WheelSVG() {
         {prizes.map((prize, i) => {
           const startAngle = i * anglePerSector;
           const endAngle = startAngle + anglePerSector;
-
           const textAngle = startAngle + anglePerSector / 2;
-
           const textPos = polarToCartesian(
             center,
             center,
@@ -78,14 +79,13 @@ export default function WheelSVG() {
                 stroke="#fff"
                 strokeWidth="3"
               />
-
               <text
                 x={textPos.x}
                 y={textPos.y}
                 textAnchor="middle"
                 dominantBaseline="middle"
                 fill="#000"
-                fontSize="16"
+                fontSize={fontSize}
                 fontWeight="bold"
                 transform={`rotate(${textAngle} ${textPos.x} ${textPos.y})`}
               >

@@ -90,3 +90,40 @@
     background-position: 18px 18px;
   }
 }
+
+/* =============================
+   BREAK LINE MOBILE
+============================= */
+.break-mobile {
+  display: inline; /* desktop: 1 dòng */
+}
+
+@media (max-width: 768px) {
+  .break-mobile {
+    display: block; /* mobile: xuống dòng */
+  }
+
+  .title-top {
+    font-size: 18px; /* giảm chữ cho mobile */
+    line-height: 1.2; /* gọn hơn */
+  }
+
+  .title-bottom {
+    font-size: 16px;
+  }
+
+  .header {
+    width: 100%;
+    max-width: 320px;
+    margin: -30px auto 0 auto;
+  }
+
+  .header-dots {
+    top: -5px;
+    left: -5px;
+    right: -5px;
+    bottom: -5px;
+    border-radius: 6px;
+    background-size: 12px 12px;
+  }
+}

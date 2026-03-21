@@ -1,16 +1,14 @@
+/* =============================
+   BODY & APP
+============================= */
 body {
   margin: 0;
   padding: 0;
-
   min-height: 150vh;
-
   display: flex;
   justify-content: center;
   align-items: flex-start;
-
   font-family: Arial, Helvetica, sans-serif;
-
-  /* nền sân khấu */
   background: radial-gradient(
     circle at center,
     #2b0a3d 0%,
@@ -22,120 +20,99 @@ body {
 
 .app {
   width: 100%;
-
   display: flex;
   flex-direction: column;
   align-items: center;
-
   margin-top: 60px;
 }
 
-/* vùng header */
+/* =============================
+   HEADER
+============================= */
 .header-area {
   width: 420px;
-
   display: flex;
   justify-content: center;
-
   margin-bottom: 25px;
 }
 
-/* vùng wheel */
+/* =============================
+   WHEEL AREA
+============================= */
 .wheel-area {
   width: 420px;
   height: 420px;
-
   position: relative;
-
   display: flex;
   justify-content: center;
   align-items: center;
+  overflow: visible;
+  /* CSS variable để characters scale theo wheelSize */
+  --wheel-size: 400px;
 }
 
-/* ánh sáng phía sau wheel */
 .wheel-area::before {
   content: "";
-
   position: absolute;
-
   width: 520px;
   height: 520px;
-
   border-radius: 50%;
-
   background: radial-gradient(
     circle,
     rgba(255, 0, 200, 0.25) 0%,
     rgba(255, 0, 200, 0.1) 30%,
     transparent 70%
   );
-
   z-index: -1;
 }
 
-/* ========================= */
-/* popup kết quả */
-/* ========================= */
-
+/* =============================
+   RESULT ALERT POPUP
+============================= */
 .result-alert {
   position: absolute;
-
   bottom: 20px;
-
   padding: 18px 50px 18px 26px;
-
   font-size: 30px;
   font-weight: bold;
-
   color: #fff;
-
   background: linear-gradient(45deg, #ff9800, #ff5722);
-
   border-radius: 16px;
-
   text-align: center;
-
   box-shadow:
     0 0 12px #ff9800,
     0 0 24px #ff5722,
     0 0 40px rgba(255, 140, 0, 0.7);
-
   animation:
     resultPop 0.5s ease,
     resultGlow 1.6s infinite;
 }
 
-/* hiệu ứng popup */
 @keyframes resultPop {
   0% {
     transform: scale(0.6);
     opacity: 0;
   }
-
   60% {
     transform: scale(1.08);
   }
-
   100% {
     transform: scale(1);
     opacity: 1;
   }
 }
 
-/* hiệu ứng glow */
 @keyframes resultGlow {
   0% {
     box-shadow:
       0 0 10px #ff9800,
       0 0 20px #ff5722;
   }
-
   50% {
     box-shadow:
       0 0 22px #ffd54f,
       0 0 45px #ff9800;
   }
-
   100% {
     box-shadow:
       0 0 10px #ff9800,
@@ -143,23 +120,16 @@ body {
   }
 }
 
-/* nút đóng */
 .result-close {
   position: absolute;
-
   top: 6px;
   right: 10px;
-
   border: none;
   background: transparent;
-
   font-size: 20px;
   color: white;
-
   cursor: pointer;
-
   opacity: 0.8;
-
   transition:
     transform 0.2s,
     opacity 0.2s;
@@ -171,18 +141,7 @@ body {
 }
 
 /* =============================
-   CHARACTER BASE
-============================= */
-.character {
-  position: absolute;
-  width: 200px;
-  z-index: 2;
-  pointer-events: none; /* không block click */
-  will-change: transform;
-}
-
-/* =============================
-   CHARACTER BASE
+   CHARACTERS
 ============================= */
 .character {
   position: absolute;
@@ -190,42 +149,35 @@ body {
   z-index: 2;
   pointer-events: none;
   will-change: transform;
-  transition: transform 0.3s ease; /* giúp dừng mượt */
+  transition: transform 0.3s ease;
 }
 
-/* =============================
-   LEFT CHARACTER
-============================= */
+/* LEFT */
 .character.left {
-  left: -180px;
+  left: calc(-0.65 * var(--wheel-size));
   transform: scaleX(-1);
 }
 
-/* =============================
-   RIGHT CHARACTER
-============================= */
+/* RIGHT */
 .character.right {
-  right: -180px;
+  right: calc(-0.65 * var(--wheel-size));
 }
 
 /* =============================
-   BOUNCE NHẸ (rất subtle)
+   BOUNCE ANIMATION
 ============================= */
-
-/* RIGHT */
 @keyframes bounce-right {
   0% {
     transform: translateY(0);
   }
   50% {
     transform: translateY(-5px);
-  } /* chỉ nhảy 4px thôi */
+  }
   100% {
     transform: translateY(0);
   }
 }
 
-/* LEFT (giữ scaleX) */
 @keyframes bounce-left {
   0% {
     transform: scaleX(-1) translateY(0);
@@ -238,7 +190,6 @@ body {
   }
 }
 
-/* APPLY */
 .character.right.spin {
   animation: bounce-right 0.8s ease-in-out infinite;
 }
@@ -248,18 +199,50 @@ body {
 }
 
 /* =============================
-   RESPONSIVE
+   MOBILE RESPONSIVE
 ============================= */
 @media (max-width: 768px) {
+  /* Wheel area co theo màn hình */
+  .wheel-area {
+    width: 100%;
+    max-width: 270px; /* co nhỏ thêm */
+    height: 270px;
+    --wheel-size: 270px; /* update CSS variable cho characters */
+  }
+
+  .wheel-area::before {
+    width: 340px;
+    height: 340px;
+  }
+
+  .wheel-rotation {
+    width: 100%;
+    max-width: 270px;
+    margin: 0 auto;
+  }
+
+  /* Nhân vật nhỏ hơn + offset theo wheelSize */
   .character {
-    width: 90px;
+    width: 70px;
   }
 
   .character.left {
-    left: -100px;
+    left: calc(-0.45 * var(--wheel-size));
   }
 
   .character.right {
-    right: -100px;
+    right: calc(-0.45 * var(--wheel-size));
+  }
+
+  /* Header responsive */
+  .header-area {
+    width: 100%;
+    padding: 0 10px;
+  }
+
+  /* Popup nhỏ hơn */
+  .result-alert {
+    font-size: 20px;
+    padding: 12px 30px 12px 16px;
   }
 }
