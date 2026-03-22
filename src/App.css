@@ -231,8 +231,20 @@ body {
     height: 200px;
   }
 
+  /* Hiển thị lại nhân vật */
   .character {
-    display: none;
+    width: 65px; /* nhỏ hơn desktop */
+    z-index: 2;
+  }
+
+  /* Character trái / phải */
+  .character.left {
+    left: -50px; /* cách wheel khoảng 60px */
+    transform: scaleX(-1);
+  }
+
+  .character.right {
+    right: -50px; /* cách wheel khoảng 60px */
   }
 
   .result-alert {
