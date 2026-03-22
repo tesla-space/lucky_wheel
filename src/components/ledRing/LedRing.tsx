@@ -9,7 +9,8 @@ type Props = {
 
 export default function LedRing({ wheelSize }: Props) {
   // Bán kính LED nằm vừa ngoài wheel
-  const RADIUS = wheelSize * 0.47;
+  const ratio = wheelSize <= 200 ? 0.42 : 0.47;
+  const RADIUS = wheelSize * ratio;
   const CENTER = wheelSize / 2;
 
   const leds = Array.from({ length: LED_COUNT });

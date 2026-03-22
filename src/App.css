@@ -1,13 +1,19 @@
 /* =============================
    BODY & APP
 ============================= */
-body {
+html,
+body,
+#root {
+  width: 100%;
+  height: 100%;
   margin: 0;
   padding: 0;
-  min-height: 150vh;
+}
+
+body {
   display: flex;
-  justify-content: center;
-  align-items: flex-start;
+  justify-content: center; /* căn giữa app ngang viewport */
+  align-items: flex-start; /* header bắt đầu từ trên */
   font-family: Arial, Helvetica, sans-serif;
   background: radial-gradient(
     circle at center,
@@ -16,44 +22,54 @@ body {
     #090012 70%,
     #000000 100%
   );
+  box-sizing: border-box;
 }
 
 .app {
   width: 100%;
+  max-width: 420px;
   display: flex;
   flex-direction: column;
-  align-items: center;
-  margin-top: 60px;
+  align-items: center; /* tất cả con căn giữa theo chiều ngang */
+  justify-content: flex-start;
+  margin: 0 auto; /* đảm bảo căn giữa trong body */
+  padding: 0;
+  box-sizing: border-box;
 }
 
 /* =============================
    HEADER
 ============================= */
 .header-area {
-  width: 420px;
+  width: 100%;
+  max-width: 420px;
   display: flex;
   justify-content: center;
-  margin-bottom: 25px;
+  margin: 55px 0 30px 0;
+  padding: 0 10px;
 }
 
 /* =============================
    WHEEL AREA
 ============================= */
 .wheel-area {
-  width: 420px;
-  height: 420px;
   position: relative;
   display: flex;
   justify-content: center;
   align-items: center;
+  width: 100%; /* full container width */
+  max-width: 400px; /* giới hạn desktop */
+  aspect-ratio: 1 / 1; /* giữ vuông */
   overflow: visible;
-  /* CSS variable để characters scale theo wheelSize */
-  --wheel-size: 400px;
+  margin: 0 auto; /* bắt buộc để căn giữa */
 }
 
 .wheel-area::before {
   content: "";
   position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
   width: 520px;
   height: 520px;
   border-radius: 50%;
@@ -152,20 +168,14 @@ body {
   transition: transform 0.3s ease;
 }
 
-/* LEFT */
 .character.left {
-  left: calc(-0.65 * var(--wheel-size));
+  left: -180px;
   transform: scaleX(-1);
 }
-
-/* RIGHT */
 .character.right {
-  right: calc(-0.65 * var(--wheel-size));
+  right: -180px;
 }
 
-/* =============================
-   BOUNCE ANIMATION
-============================= */
 @keyframes bounce-right {
   0% {
     transform: translateY(0);
@@ -193,7 +203,6 @@ body {
 .character.right.spin {
   animation: bounce-right 0.8s ease-in-out infinite;
 }
-
 .character.left.spin {
   animation: bounce-left 0.8s ease-in-out infinite;
 }
@@ -202,45 +211,25 @@ body {
    MOBILE RESPONSIVE
 ============================= */
 @media (max-width: 768px) {
-  /* Wheel area co theo màn hình */
+  .app {
+    max-width: 260px; /* full width mobile */
+    margin: 0; /* không căn giữa cha */
+  }
+
   .wheel-area {
-    width: 100%;
-    max-width: 270px; /* co nhỏ thêm */
-    height: 270px;
-    --wheel-size: 270px; /* update CSS variable cho characters */
+    width: 260px; /* size mobile */
+    margin: 0 auto; /* căn giữa bắt buộc */
   }
 
   .wheel-area::before {
-    width: 340px;
-    height: 340px;
+    width: 200px;
+    height: 200px;
   }
 
-  .wheel-rotation {
-    width: 100%;
-    max-width: 270px;
-    margin: 0 auto;
-  }
-
-  /* Nhân vật nhỏ hơn + offset theo wheelSize */
   .character {
-    width: 70px;
+    display: none;
   }
 
-  .character.left {
-    left: calc(-0.45 * var(--wheel-size));
-  }
-
-  .character.right {
-    right: calc(-0.45 * var(--wheel-size));
-  }
-
-  /* Header responsive */
-  .header-area {
-    width: 100%;
-    padding: 0 10px;
-  }
-
-  /* Popup nhỏ hơn */
   .result-alert {
     font-size: 20px;
     padding: 12px 30px 12px 16px;

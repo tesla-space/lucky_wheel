@@ -10,5 +10,4 @@
   transition: transform 8s cubic-bezier(0.33, 1, 0.68, 1);
   width: 100%;
   height: auto;
-  max-width: 400px;
 }

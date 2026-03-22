@@ -19,13 +19,13 @@ export default function App() {
   useEffect(() => {
     const updateSize = () => {
       // Mobile: co thêm 10px nữa để wheel vừa màn hình
-      setWheelSize(window.innerWidth <= 768 ? 270 : 400);
+      setWheelSize(window.innerWidth <= 768 ? 260 : 400);
     };
     updateSize();
     window.addEventListener("resize", updateSize);
     return () => window.removeEventListener("resize", updateSize);
   }, []);
-
+  //style={{ width: wheelSize, height: wheelSize }}
   return (
     <div className="app">
       {/* HEADER */}
@@ -43,20 +43,12 @@ export default function App() {
           src="/images/left-girl.png"
           className={`character left ${spinning ? "spin" : ""}`}
           alt="Left Girl"
-          style={{
-            width: wheelSize * 0.5, // kích thước theo wheelSize
-            left: -wheelSize * 0.45, // offset xa wheel hơn
-          }}
         />
 
         <img
           src="/images/right-girl.png"
           className={`character right ${spinning ? "spin" : ""}`}
           alt="Right Girl"
-          style={{
-            width: wheelSize * 0.5,
-            right: -wheelSize * 0.45,
-          }}
         />
 
         {/* POINTER */}
