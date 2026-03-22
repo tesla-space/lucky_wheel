@@ -40,7 +40,14 @@ export default function useLuckyWheel() {
       ([prize, count]) => Array(count).fill(prize as PrizeType),
     );
 
-    prizePool.current = shuffle(prizes);
+    // 1. Tách GIẢI NHẤT (mới)
+    const firstIndex = prizes.findIndex((p) => p === "GIẢI NHẤT");
+    const firstPrize = prizes.splice(firstIndex, 1)[0]; // lấy ra 1 giải nhất
+
+    // 2. Shuffle các giải còn lại (mới)
+    const shuffled = shuffle(prizes);
+    prizePool.current = [firstPrize, ...shuffled];
+    //prizePool.current = shuffle(prizes); đây là code cũ chưa cho giải nhất lên đầu
   }
 
   const draw = () => {
