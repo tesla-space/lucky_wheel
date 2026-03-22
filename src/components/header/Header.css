@@ -99,12 +99,8 @@
 }
 
 @media (max-width: 768px) {
-  .break-mobile {
-    display: block; /* mobile: xuống dòng */
-  }
-
   .title-top {
-    font-size: 18px; /* giảm chữ cho mobile */
+    font-size: 13px; /* giảm chữ cho mobile */
     line-height: 1.2; /* gọn hơn */
   }
 

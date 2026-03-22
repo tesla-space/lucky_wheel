@@ -212,13 +212,18 @@ body {
 ============================= */
 @media (max-width: 768px) {
   .app {
-    max-width: 260px; /* full width mobile */
-    margin: 0; /* không căn giữa cha */
+    max-width: 100%; /* full width mobile */
   }
 
   .wheel-area {
     width: 260px; /* size mobile */
     margin: 0 auto; /* căn giữa bắt buộc */
+  }
+
+  .header-area {
+    width: calc(100% - 10px); /* cách 5px 2 bên */
+    padding: 0 5px;
+    max-width: none;
   }
 
   .wheel-area::before {
