@@ -6,11 +6,11 @@ import { PRIZES } from "../constants/prizes";
 export type PrizeType = (typeof PRIZES)[number]["label"];
 /* cấu hình số lượng giải */
 const PRIZE_CONFIG: Record<PrizeType, number> = {
-  "GIẢI ĐẶC BIỆT": 1,
-  "GIẢI NHẤT": 1,
-  "GIẢI NHÌ": 2,
-  "GIẢI BA": 3,
-  "KHUYẾN KHÍCH": 10,
+  "СПЕЦИАЛЬНОЕ МЕСТО": 1,
+  "ПЕРВОЕ МЕСТО": 1,
+  "ВТОРОЕ МЕСТО": 2,
+  "ТРЕТЬЕ МЕСТО": 3,
+  "ПООЩРИТЕЛЬНЫЙ ПРИЗ": 10,
 };
 
 /* shuffle Fisher–Yates */
@@ -38,13 +38,15 @@ export default function useLuckyWheel() {
   }
 
   if (!prizePool.current) {
-    const khuyenKhich = Array(PRIZE_CONFIG["KHUYẾN KHÍCH"]).fill(
-      "KHUYẾN KHÍCH",
+    const khuyenKhich = Array(PRIZE_CONFIG["ПООЩРИТЕЛЬНЫЙ ПРИЗ"]).fill(
+      "ПООЩРИТЕЛЬНЫЙ ПРИЗ",
     );
-    const giaiBa = Array(PRIZE_CONFIG["GIẢI BA"]).fill("GIẢI BA");
-    const giaiNhi = Array(PRIZE_CONFIG["GIẢI NHÌ"]).fill("GIẢI NHÌ");
-    const giaiNhat = Array(PRIZE_CONFIG["GIẢI NHẤT"]).fill("GIẢI NHẤT");
-    const dacBiet = Array(PRIZE_CONFIG["GIẢI ĐẶC BIỆT"]).fill("GIẢI ĐẶC BIỆT");
+    const giaiBa = Array(PRIZE_CONFIG["ТРЕТЬЕ МЕСТО"]).fill("ТРЕТЬЕ МЕСТО");
+    const giaiNhi = Array(PRIZE_CONFIG["ВТОРОЕ МЕСТО"]).fill("ВТОРОЕ МЕСТО");
+    const giaiNhat = Array(PRIZE_CONFIG["ПЕРВОЕ МЕСТО"]).fill("ПЕРВОЕ МЕСТО");
+    const dacBiet = Array(PRIZE_CONFIG["СПЕЦИАЛЬНОЕ МЕСТО"]).fill(
+      "СПЕЦИАЛЬНОЕ МЕСТО",
+    );
 
     //QUAN TRỌNG: đảo ngược vì dùng pop()
     prizePool.current = [
@@ -92,3 +94,9 @@ export default function useLuckyWheel() {
 
   return { draw };
 }
+
+// Giải đặc biệt → СПЕЦИАЛЬНОЕ МЕСТО
+// Giải nhất → ПЕРВОЕ МЕСТО
+// Giải nhì → ВТОРОЕ МЕСТО
+// Giải ba → ТРЕТЬЕ МЕСТО
+// Giải khuyến khích → ПООЩРИТЕЛЬНЫЙ ПРИЗ

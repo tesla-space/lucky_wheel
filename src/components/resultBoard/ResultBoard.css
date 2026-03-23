@@ -32,10 +32,10 @@
   border-radius: 12px;
   display: flex;
   flex-wrap: wrap;
-  gap: 6px;
+  gap: 5px;
   justify-content: center;
   align-items: center;
-  padding: 10px;
+  padding: 8px;
 
   /* THÊM CÁI NÀY */
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.4);
@@ -48,9 +48,9 @@
   text-align: center;
   background: rgba(255, 255, 255, 0.9);
   color: black;
-  padding: 6px 8px;
+  padding: 5px 7px;
   border-radius: 6px;
-  font-size: 14px;
+  font-size: 16px;
   font-weight: bold;
   animation: popIn 0.3s ease;
 }

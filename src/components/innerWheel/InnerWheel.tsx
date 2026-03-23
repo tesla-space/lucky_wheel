@@ -19,7 +19,7 @@ export default function InnerWheel({
 
   // Tỉ lệ inner wheel với wheel container
   const innerSize = wheelSize * 0.275; // 110/400 ≈ 0.275
-  const playFont = innerSize * 0.2; // font PLAY
+  const playFont = innerSize * 0.15; // font PLAY
   const numberFont = innerSize * 0.36; // font number
 
   return (
@@ -34,7 +34,7 @@ export default function InnerWheel({
         </div>
       ) : (
         <div className="play" style={{ fontSize: playFont }}>
-          PLAY
+          ЛОТЕРЕЯ
         </div>
       )}
     </div>

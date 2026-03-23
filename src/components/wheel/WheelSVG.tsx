@@ -48,7 +48,7 @@ export default function WheelSVG({ wheelSize }: Props) {
   }
 
   const anglePerSector = 360 / prizes.length;
-  const fontSize = size <= 300 ? 8 : 15; // co theo wheelSize
+  const fontSize = size <= 300 ? 5 : 9.55; // co theo wheelSize
 
   return (
     <div className="wheel-container">

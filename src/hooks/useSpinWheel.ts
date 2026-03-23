@@ -218,7 +218,7 @@ export default function useSpinWheel() {
 
       setTimeout(() => {
         const formattedNumber = String(targetNumber).padStart(3, "0");
-        const message = `Chúc mừng số: ${formattedNumber} - ${prize}`;
+        const message = `ПОЗДРАВЛЯЕМ! ВЫПАЛ НОМЕР: ${formattedNumber} - ${prize}`;
 
         setResult(message);
         setSpinning(false);
