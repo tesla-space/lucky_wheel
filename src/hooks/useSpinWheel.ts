@@ -158,7 +158,19 @@ export default function useSpinWheel() {
 
       rotationRef.current = finalRotation;
 
+      // RESET trước
+      wheelRef.current.style.transition = "none";
+      wheelRef.current.style.transform = `translateZ(0) rotate(${normalized}deg)`;
+
+      // force reflow
+      void wheelRef.current.offsetHeight;
+
+      // apply animation
+      wheelRef.current.style.transition =
+        "transform 10s cubic-bezier(0.22, 1, 0.36, 1)";
       wheelRef.current.style.transform = `translateZ(0) rotate(${finalRotation}deg)`;
+
+      //wheelRef.current.style.transform = `translateZ(0) rotate(${finalRotation}deg)`;
     }
 
     // ===== Đây là cũ =====

@@ -1,7 +1,7 @@
 .header {
   position: relative;
   width: 620px; /* rộng hơn để đủ 1 dòng */
-  margin: -40px auto 0px auto; /* kéo header lên trên */
+  margin: 15px auto 0px auto; /* kéo header lên trên */
   text-align: center;
 }
 
