@@ -1,13 +1,16 @@
 import { useRef } from "react";
+import { PRIZES } from "../constants/prizes";
 
-export type PrizeType = "GIẢI NHẤT" | "GIẢI NHÌ" | "GIẢI BA" | "KHUYẾN KHÍCH";
+// export type PrizeType = "GIẢI NHẤT" | "GIẢI NHÌ" | "GIẢI BA" | "KHUYẾN KHÍCH";
 
+export type PrizeType = (typeof PRIZES)[number]["label"];
 /* cấu hình số lượng giải */
 const PRIZE_CONFIG: Record<PrizeType, number> = {
+  "GIẢI ĐẶC BIỆT": 1,
   "GIẢI NHẤT": 1,
   "GIẢI NHÌ": 2,
   "GIẢI BA": 3,
-  "KHUYẾN KHÍCH": 9,
+  "KHUYẾN KHÍCH": 10,
 };
 
 /* shuffle Fisher–Yates */
@@ -29,26 +32,45 @@ export default function useLuckyWheel() {
 
   /* khởi tạo pool số (1 → 130) */
   if (!numberPool.current) {
-    const nums = Array.from({ length: 130 }, (_, i) => i + 1);
+    const nums = Array.from({ length: 81 }, (_, i) => i + 1);
 
     numberPool.current = shuffle(nums);
   }
 
-  /* khởi tạo pool giải */
   if (!prizePool.current) {
-    const prizes: PrizeType[] = Object.entries(PRIZE_CONFIG).flatMap(
-      ([prize, count]) => Array(count).fill(prize as PrizeType),
+    const khuyenKhich = Array(PRIZE_CONFIG["KHUYẾN KHÍCH"]).fill(
+      "KHUYẾN KHÍCH",
     );
+    const giaiBa = Array(PRIZE_CONFIG["GIẢI BA"]).fill("GIẢI BA");
+    const giaiNhi = Array(PRIZE_CONFIG["GIẢI NHÌ"]).fill("GIẢI NHÌ");
+    const giaiNhat = Array(PRIZE_CONFIG["GIẢI NHẤT"]).fill("GIẢI NHẤT");
+    const dacBiet = Array(PRIZE_CONFIG["GIẢI ĐẶC BIỆT"]).fill("GIẢI ĐẶC BIỆT");
 
-    // 1. Tách GIẢI NHẤT (mới)
-    const firstIndex = prizes.findIndex((p) => p === "GIẢI NHẤT");
-    const firstPrize = prizes.splice(firstIndex, 1)[0]; // lấy ra 1 giải nhất
-
-    // 2. Shuffle các giải còn lại (mới)
-    const shuffled = shuffle(prizes);
-    prizePool.current = [firstPrize, ...shuffled];
-    //prizePool.current = shuffle(prizes); đây là code cũ chưa cho giải nhất lên đầu
+    //QUAN TRỌNG: đảo ngược vì dùng pop()
+    prizePool.current = [
+      ...dacBiet,
+      ...giaiNhat,
+      ...giaiNhi,
+      ...giaiBa,
+      ...khuyenKhich,
+    ];
   }
+
+  /* khởi tạo pool giải */
+  // if (!prizePool.current) {
+  //   const prizes: PrizeType[] = Object.entries(PRIZE_CONFIG).flatMap(
+  //     ([prize, count]) => Array(count).fill(prize as PrizeType),
+  //   );
+
+  //   // 1. Tách GIẢI NHẤT (mới)
+  //   const firstIndex = prizes.findIndex((p) => p === "GIẢI NHẤT");
+  //   const firstPrize = prizes.splice(firstIndex, 1)[0]; // lấy ra 1 giải nhất
+
+  //   // 2. Shuffle các giải còn lại (mới)
+  //   const shuffled = shuffle(prizes);
+  //   prizePool.current = [firstPrize, ...shuffled];
+  //   //prizePool.current = shuffle(prizes); đây là code cũ chưa cho giải nhất lên đầu
+  // }
 
   const draw = () => {
     const numbers = numberPool.current!;

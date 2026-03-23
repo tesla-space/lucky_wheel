@@ -1,18 +1,14 @@
 // src/components/wheel/wheelSVG.tsx
 
 import "./wheel.css";
+import { PRIZES } from "../../constants/prizes";
 
 type Prize = {
   label: string;
   color: string;
 };
 
-const prizes: Prize[] = [
-  { label: "GIẢI NHẤT", color: "#FFD700" },
-  { label: "GIẢI NHÌ", color: "#4DA6FF" },
-  { label: "GIẢI BA", color: "#4CAF50" },
-  { label: "KHUYẾN KHÍCH", color: "#FF9800" },
-];
+const prizes: Prize[] = PRIZES;
 
 type Props = {
   wheelSize: number; // nhận từ App.tsx
@@ -23,6 +19,7 @@ export default function WheelSVG({ wheelSize }: Props) {
   const center = size / 2;
   const radius = size / 2 - 20; // để path và text nằm gọn trong wheel
 
+  // Hàm tính tọa độ x, y
   function polarToCartesian(
     centerX: number,
     centerY: number,
@@ -36,6 +33,7 @@ export default function WheelSVG({ wheelSize }: Props) {
     };
   }
 
+  // Hàm tính cung cần vẽ
   function describeArc(startAngle: number, endAngle: number) {
     const start = polarToCartesian(center, center, radius, endAngle);
     const end = polarToCartesian(center, center, radius, startAngle);

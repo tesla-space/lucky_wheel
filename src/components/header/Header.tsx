@@ -10,6 +10,7 @@ export default function Header() {
           Российско-Вьетнамский{" "}
           <span className="break-mobile">тропический центр</span>
         </div>
+        <div className="title-middle">ОТДЕЛ ПОДГОТОВКИ КАДРОВ</div>
 
         <div className="title-bottom-wrapper">
           <div className="title-bottom">Колесо удачи</div>

@@ -1,0 +1,96 @@
+/* =============================
+   RESULT BOARD
+============================= */
+
+.result-board {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+/* mỗi block giải */
+.group {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+}
+
+/* title */
+.group .title {
+  margin-bottom: 4px;
+  font-size: 16px;
+  font-weight: bold;
+  color: white;
+  text-align: center;
+}
+
+/* ô chứa số */
+.group .numbers {
+  width: 100%;
+  min-height: 50px;
+  border-radius: 12px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  justify-content: center;
+  align-items: center;
+  padding: 10px;
+
+  /* THÊM CÁI NÀY */
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.4);
+  border: 2px solid rgba(255, 255, 255, 0.2);
+}
+
+/* từng số */
+.group .numbers span {
+  min-width: 40px;
+  text-align: center;
+  background: rgba(255, 255, 255, 0.9);
+  color: black;
+  padding: 6px 8px;
+  border-radius: 6px;
+  font-size: 14px;
+  font-weight: bold;
+  animation: popIn 0.3s ease;
+}
+
+/* =============================
+   MÀU THEO GIẢI (QUAN TRỌNG)
+   .group.GIẢI\ ĐẶC\ BIỆT .numbers {
+  background: red;
+}
+
+.group.GIẢI\ NHẤT .numbers {
+  background: gold;
+}
+
+.group.GIẢI\ NHÌ .numbers {
+  background: #4da6ff;
+}
+
+.group.GIẢI\ BA .numbers {
+  background: #4caf50;
+}
+
+.group.KHUYẾN\ KHÍCH .numbers {
+  background: #ff9800;
+  min-height: 140px;
+}
+
+============================= */
+
+/* =============================
+   ANIMATION
+============================= */
+
+@keyframes popIn {
+  0% {
+    transform: scale(0.6);
+    opacity: 0;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
