@@ -5,16 +5,9 @@ html,
 body,
 #root {
   width: 100%;
-  height: 100%;
+  min-height: 100%;
   margin: 0;
   padding: 0;
-}
-
-body {
-  display: flex;
-  justify-content: center; /* căn giữa app ngang viewport */
-  align-items: flex-start; /* header bắt đầu từ trên */
-  font-family: Arial, Helvetica, sans-serif;
   background: radial-gradient(
     circle at center,
     #2b0a3d 0%,
@@ -22,26 +15,26 @@ body {
     #090012 70%,
     #000000 100%
   );
+}
+
+body {
+  min-height: 100vh;
+  background: none;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  font-family: Arial, Helvetica, sans-serif;
   box-sizing: border-box;
 }
 
 /* =============================
-   .app {
-  width: 100%;
-  max-width: 420px;
-  display: flex;
-  flex-direction: column;
-  align-items: center; 
-  justify-content: flex-start;
-  margin: 0 auto; 
-  padding: 0;
-  box-sizing: border-box;
+   app
 ============================= */
 .app {
   width: 100%;
-  max-width: 1200px; /* 👈 mở rộng */
+  max-width: 1200px;
   display: flex;
-  flex-direction: row; /* 👈 quan trọng */
+  flex-direction: row;
   justify-content: center;
   align-items: flex-start;
   margin: 0 auto;
@@ -82,17 +75,17 @@ body {
 
 /* =============================
    WHEEL AREA
+  width: 100%; 
+  max-width: 400px; 
+  aspect-ratio: 1 / 1;
+  overflow: visible;
 ============================= */
 .wheel-area {
   position: relative;
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 100%; /* full container width */
-  max-width: 400px; /* giới hạn desktop */
-  aspect-ratio: 1 / 1; /* giữ vuông */
-  overflow: visible;
-  margin: 0 auto; /* bắt buộc để căn giữa */
+  margin: 0 auto;
 }
 
 .wheel-area::before {
@@ -258,7 +251,7 @@ body {
   .app {
     flex-direction: column;
     align-items: center;
-    max-width: 100%; /* full width mobile */
+    gap: 20px;
   }
 
   .left-panel {
@@ -267,19 +260,19 @@ body {
 
   .right-panel {
     width: 100%;
-    max-width: 400px;
-    margin-top: 20px;
+    max-width: 320px;
   }
 
   .wheel-area {
-    width: 260px; /* size mobile */
-    margin: 0 auto; /* căn giữa bắt buộc */
+    width: 260px;
+    margin: 0 auto;
   }
 
   .header-area {
     width: calc(100% - 10px); /* cách 5px 2 bên */
     padding: 0 5px;
     max-width: none;
+    margin-top: 45px;
   }
 
   .wheel-area::before {

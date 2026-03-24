@@ -48,7 +48,6 @@ export default function WheelSVG({ wheelSize }: Props) {
   }
 
   const anglePerSector = 360 / prizes.length;
-  const fontSize = size <= 300 ? 5 : 9.55; // co theo wheelSize
 
   return (
     <div className="wheel-container">
@@ -69,6 +68,12 @@ export default function WheelSVG({ wheelSize }: Props) {
             textAngle,
           );
 
+          // điều chỉnh kích cỡ và màu của chữ nếu có
+          const baseFont = size <= 300 ? 5.5 : 10;
+          const smallFont = size <= 300 ? 5.5 : 9.56;
+          const currentFontSize =
+            prize.label === "ПООЩРИТЕЛЬНЫЙ ПРИЗ" ? smallFont : baseFont;
+
           return (
             <g key={i}>
               <path
@@ -83,7 +88,7 @@ export default function WheelSVG({ wheelSize }: Props) {
                 textAnchor="middle"
                 dominantBaseline="middle"
                 fill="#000"
-                fontSize={fontSize}
+                fontSize={currentFontSize}
                 fontWeight="bold"
                 transform={`rotate(${textAngle} ${textPos.x} ${textPos.y})`}
               >

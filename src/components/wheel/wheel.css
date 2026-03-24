@@ -13,7 +13,10 @@
   box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
 
   transition: transform 8s cubic-bezier(0.33, 1, 0.68, 1);
-
-  width: 400px; /* FIX CỨNG */
-  height: 400px; /* FIX CỨNG */
 }
+
+/* 
+width: 400px;
+height: 400px; 
+
+*/

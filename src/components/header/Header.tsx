@@ -7,8 +7,8 @@ export default function Header() {
 
       <div className="header-text">
         <div className="title-top">
-          Российско-Вьетнамский{" "}
-          <span className="break-mobile">тропический центр</span>
+          РОССИЙСКО-ВЬЕТНАМСКИЙ{" "}
+          <span className="break-mobile">ТРОПИЧЕСКИЙ ЦЕНТР</span>
         </div>
         <div className="title-middle">ОТДЕЛ ПОДГОТОВКИ КАДРОВ</div>
 
@@ -19,3 +19,8 @@ export default function Header() {
     </div>
   );
 }
+// Российско-Вьетнамский тропический центр
+// ОТДЕЛ ПОДГОТОВКИ КАДРОВ
+
+// РОССИЙСКО-ВЬЕТНАМСКИЙ ТРОПИЧЕСКИЙ ЦЕНТР
+// ОТДЕЛ ПОДГОТОВКИ КАДРОВ

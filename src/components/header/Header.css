@@ -13,26 +13,27 @@
 
 /* dòng 1 */
 .title-top {
-  font-size: 28px;
+  font-size: 22px;
   font-weight: bold;
   margin-bottom: 2px;
   color: #ffffff;
   white-space: nowrap; /* không cho xuống dòng */
   text-shadow:
-    0 0 5px #ff4fd8,
-    0 0 10px #ff4fd8;
+    0 0 8px #ff4fd8,
+    0 0 16px #ff4fd8,
+    0 0 24px #ff4fd8;
 }
 
 /* dòng giữa (Phòng đào tạo) */
 .title-middle {
-  font-size: 18px;
-  font-weight: 600;
-  color: #ffffff; /* cùng tông vàng với dòng dưới */
-  letter-spacing: 1px;
+  font-size: 22px;
+  font-weight: bold;
+  color: #ffffff;
   white-space: nowrap;
   text-shadow:
-    0 0 5px #ff4fd8,
-    0 0 10px #ff4fd8;
+    0 0 8px #ff4fd8,
+    0 0 16px #ff4fd8,
+    0 0 24px #ff4fd8;
 }
 
 /* khung chữ chạy */
@@ -95,8 +96,11 @@
 
 @media (max-width: 768px) {
   .title-top {
-    font-size: 13px; /* giảm chữ cho mobile */
-    line-height: 1.2; /* gọn hơn */
+    font-size: 12px; /* giảm chữ cho mobile */
+  }
+
+  .title-middle {
+    font-size: 12px;
   }
 
   .title-bottom {
