@@ -8,13 +8,18 @@
 .led {
   position: absolute;
   border-radius: 50%;
-  background: #ff4fd8;
   transform: translate(-50%, -50%);
+
+  /*lõi màu (QUAN TRỌNG NHẤT) */
+  background: #ff00cc;
+
+  /*glow nhẹ thôi */
   box-shadow:
-    0 0 6px #ff4fd8,
-    0 0 12px #ff4fd8,
-    0 0 20px #ff4fd8;
-  animation: blink 1s infinite alternate;
+    0 0 2px #ff4fd8,
+    0 0 6px #ff4fd8;
+
+  animation: blink 0.9s infinite alternate;
+  filter: brightness(1.1);
 }
 
 @keyframes blink {
@@ -22,18 +27,6 @@
     opacity: 1;
   }
   100% {
-    opacity: 0.3;
-  }
-}
-
-/* =============================
-   MOBILE RESPONSIVE
-============================= */
-@media (max-width: 768px) {
-  .led {
-    box-shadow:
-      0 0 2px #ff4fd8,
-      0 0 4px #ff4fd8,
-      0 0 8px #ff4fd8;
+    opacity: 0.2;
   }
 }

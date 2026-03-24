@@ -87,9 +87,12 @@ export default function WheelSVG({ wheelSize }: Props) {
                 y={textPos.y}
                 textAnchor="middle"
                 dominantBaseline="middle"
-                fill="#000"
+                fill="#fff"
+                stroke="#000"
+                strokeWidth="0.7"
+                paintOrder="stroke"
                 fontSize={currentFontSize}
-                fontWeight="bold"
+                fontWeight="600"
                 transform={`rotate(${textAngle} ${textPos.x} ${textPos.y})`}
               >
                 {prize.label}

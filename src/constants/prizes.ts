@@ -1,9 +1,9 @@
-export const PRIZES: PrizeItem[] = [
-  { label: "СПЕЦИАЛЬНОЕ МЕСТО", color: "#FF0000" },
-  { label: "ПЕРВОЕ МЕСТО", color: "#FFD700" },
-  { label: "ВТОРОЕ МЕСТО", color: "#4DA6FF" },
-  { label: "ТРЕТЬЕ МЕСТО", color: "#4CAF50" },
-  { label: "ПООЩРИТЕЛЬНЫЙ ПРИЗ", color: "#FF9800" },
+export const PRIZES = [
+  { label: "СПЕЦИАЛЬНОЕ МЕСТО", color: "#D50000" }, // đỏ đậm
+  { label: "ПЕРВОЕ МЕСТО", color: "#FFC107" }, // vàng đậm hơn
+  { label: "ВТОРОЕ МЕСТО", color: "#1976D2" }, // xanh đậm (rất quan trọng)
+  { label: "ТРЕТЬЕ МЕСТО", color: "#2E7D32" }, // xanh lá đậm
+  { label: "ПООЩРИТЕЛЬНЫЙ ПРИЗ", color: "#F57C00" }, // cam đậm
 ];
 
 export type PrizeItem = {

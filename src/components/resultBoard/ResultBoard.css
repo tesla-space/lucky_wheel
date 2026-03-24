@@ -23,6 +23,7 @@
   font-weight: bold;
   color: white;
   text-align: center;
+  -webkit-text-stroke: 0.5px #000;
 }
 
 /* ô chứa số */
@@ -38,7 +39,7 @@
   padding: 8px;
 
   /* THÊM CÁI NÀY */
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.4);
+  box-shadow: 0 0 4px rgba(0, 0, 0, 0.3);
   border: 2px solid rgba(255, 255, 255, 0.2);
 }
 
@@ -46,39 +47,16 @@
 .group .numbers span {
   min-width: 40px;
   text-align: center;
-  background: rgba(255, 255, 255, 0.9);
+  background: #ffffff;
+  border: 2px solid #000;
+  -webkit-text-stroke: 0.5px #000;
   color: black;
   padding: 5px 7px;
   border-radius: 6px;
   font-size: 16px;
-  font-weight: bold;
+  font-weight: 600;
   animation: popIn 0.3s ease;
 }
-
-/* =============================
-   MÀU THEO GIẢI (QUAN TRỌNG)
-   .group.GIẢI\ ĐẶC\ BIỆT .numbers {
-  background: red;
-}
-
-.group.GIẢI\ NHẤT .numbers {
-  background: gold;
-}
-
-.group.GIẢI\ NHÌ .numbers {
-  background: #4da6ff;
-}
-
-.group.GIẢI\ BA .numbers {
-  background: #4caf50;
-}
-
-.group.KHUYẾN\ KHÍCH .numbers {
-  background: #ff9800;
-  min-height: 140px;
-}
-
-============================= */
 
 /* =============================
    ANIMATION

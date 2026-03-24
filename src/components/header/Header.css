@@ -18,10 +18,10 @@
   margin-bottom: 2px;
   color: #ffffff;
   white-space: nowrap; /* không cho xuống dòng */
+  -webkit-text-stroke: 0.5px #000;
   text-shadow:
-    0 0 8px #ff4fd8,
-    0 0 16px #ff4fd8,
-    0 0 24px #ff4fd8;
+    0 0 2px #ff4fd8,
+    0 0 6px #ff4fd8;
 }
 
 /* dòng giữa (Phòng đào tạo) */
@@ -30,10 +30,10 @@
   font-weight: bold;
   color: #ffffff;
   white-space: nowrap;
+  -webkit-text-stroke: 0.5px #000;
   text-shadow:
-    0 0 8px #ff4fd8,
-    0 0 16px #ff4fd8,
-    0 0 24px #ff4fd8;
+    0 0 2px #ff4fd8,
+    0 0 6px #ff4fd8;
 }
 
 /* khung chữ chạy */
@@ -49,6 +49,7 @@
   font-weight: bold;
   white-space: nowrap;
   color: #ffd700;
+  -webkit-text-stroke: 0.5px #000;
   animation: marquee 8s linear infinite;
 }
 
@@ -70,10 +71,9 @@
   left: -8px;
   right: -8px;
   bottom: -8px;
-  border-radius: 10px;
   pointer-events: none;
-  background: radial-gradient(circle, #ff4fd8 2px, transparent 3px);
-  background-size: 18px 18px;
+  background: radial-gradient(circle, #ff00cc 4px, transparent 6px);
+  background-size: 21px 21px;
   animation: dotsMove 6s linear infinite;
 }
 
