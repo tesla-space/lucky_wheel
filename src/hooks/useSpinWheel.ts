@@ -111,7 +111,7 @@ export default function useSpinWheel() {
     const sectorCenter = prizeIndex * anglePerSector + anglePerSector / 2;
     let targetAngle = pointerAngle - sectorCenter + randomOffset;
     targetAngle = (targetAngle + 360) % 360;
-    const extraSpin = 360 * 8;
+    const extraSpin = 360 * 6;
 
     // đây là tạo quay mới
     if (wheelRef.current) {
