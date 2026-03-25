@@ -19,7 +19,7 @@ export default function Pointer({ wheelSize }: Props) {
         style={{
           borderLeft: `${arrowWidth}px solid transparent`,
           borderRight: `${arrowWidth}px solid transparent`,
-          borderTop: `${arrowHeight}px solid red`,
+          borderTop: `${arrowHeight}px solid #00b0ff`,
         }}
       />
     </div>

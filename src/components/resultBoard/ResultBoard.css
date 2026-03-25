@@ -23,7 +23,7 @@
   font-weight: bold;
   color: white;
   text-align: center;
-  -webkit-text-stroke: 0.5px #000;
+  -webkit-text-stroke: 0.2px #000;
 }
 
 /* ô chứa số */
@@ -39,7 +39,7 @@
   padding: 8px;
   border: 2px solid #ffffff;
   /* THÊM CÁI NÀY */
-  box-shadow: 0 0 4px rgba(0, 0, 0, 0.3);
+  box-shadow: 0 0 3px rgba(0, 0, 0, 0.3);
 }
 
 /* từng số */
@@ -48,7 +48,7 @@
   text-align: center;
   background: #ffffff;
   border: 2px solid #000;
-  -webkit-text-stroke: 0.5px #000;
+  -webkit-text-stroke: 0.2px #000;
   color: black;
   padding: 5px 7px;
   border-radius: 6px;

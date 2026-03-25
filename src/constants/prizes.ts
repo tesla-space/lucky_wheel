@@ -1,5 +1,5 @@
 export const PRIZES = [
-  { label: "СУПЕРПРИЗ", color: "#FF1744" }, // đỏ noen
+  { label: "СУПЕРПРИЗ", color: "#FF4D6D" }, // đỏ noen
   { label: "ПЕРВОЕ МЕСТО", color: "#FFD600" }, // vàng sáng neon
   { label: "ВТОРОЕ МЕСТО", color: "#00B0FF" }, // xanh sáng
   { label: "ТРЕТЬЕ МЕСТО", color: "#00E676" }, // xanh lá sáng

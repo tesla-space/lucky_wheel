@@ -18,19 +18,19 @@
   margin-bottom: 2px;
   color: #ffffff;
   white-space: nowrap; /* không cho xuống dòng */
-  -webkit-text-stroke: 0.5px #000;
+  -webkit-text-stroke: 0.2px #000;
   text-shadow:
     0 0 2px #ff4fd8,
     0 0 6px #ff4fd8;
 }
 
-/* dòng giữa (Phòng đào tạo) */
+/* dòng 2 (Phòng đào tạo) */
 .title-middle {
   font-size: 22px;
   font-weight: bold;
   color: #ffffff;
   white-space: nowrap;
-  -webkit-text-stroke: 0.5px #000;
+  -webkit-text-stroke: 0.2px #000;
   text-shadow:
     0 0 2px #ff4fd8,
     0 0 6px #ff4fd8;
@@ -42,14 +42,14 @@
   overflow: hidden;
 }
 
-/* dòng 2 */
+/* dòng 3*/
 .title-bottom {
   display: inline-block;
   font-size: 28px;
   font-weight: bold;
   white-space: nowrap;
-  color: #ffd700;
-  -webkit-text-stroke: 0.5px #000;
+  color: #ffd600;
+  -webkit-text-stroke: 0.2px #000;
   animation: marquee 8s linear infinite;
 }
 
