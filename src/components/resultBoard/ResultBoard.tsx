@@ -30,7 +30,7 @@ export default function ResultBoard({ results }: Props) {
 
   return (
     <div className="result-board">
-      {renderGroup("СПЕЦИАЛЬНОЕ МЕСТО")}
+      {renderGroup("СУПЕРПРИЗ")}
       {renderGroup("ПЕРВОЕ МЕСТО")}
       {renderGroup("ВТОРОЕ МЕСТО")}
       {renderGroup("ТРЕТЬЕ МЕСТО")}
@@ -39,7 +39,7 @@ export default function ResultBoard({ results }: Props) {
   );
 }
 
-// Giải đặc biệt → СПЕЦИАЛЬНОЕ МЕСТО
+// Giải đặc biệt → СУПЕРПРИЗ
 // Giải nhất → ПЕРВОЕ МЕСТО
 // Giải nhì → ВТОРОЕ МЕСТО
 // Giải ba → ТРЕТЬЕ МЕСТО

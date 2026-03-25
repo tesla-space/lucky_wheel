@@ -69,7 +69,7 @@ export default function WheelSVG({ wheelSize }: Props) {
           );
 
           // điều chỉnh kích cỡ và màu của chữ nếu có
-          const baseFont = size <= 300 ? 5.5 : 10;
+          const baseFont = size <= 300 ? 6 : 13;
           const smallFont = size <= 300 ? 5.5 : 9.56;
           const currentFontSize =
             prize.label === "ПООЩРИТЕЛЬНЫЙ ПРИЗ" ? smallFont : baseFont;

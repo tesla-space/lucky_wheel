@@ -1,9 +1,9 @@
 export const PRIZES = [
-  { label: "СПЕЦИАЛЬНОЕ МЕСТО", color: "#D50000" }, // đỏ đậm
-  { label: "ПЕРВОЕ МЕСТО", color: "#FFC107" }, // vàng đậm hơn
-  { label: "ВТОРОЕ МЕСТО", color: "#1976D2" }, // xanh đậm (rất quan trọng)
-  { label: "ТРЕТЬЕ МЕСТО", color: "#2E7D32" }, // xanh lá đậm
-  { label: "ПООЩРИТЕЛЬНЫЙ ПРИЗ", color: "#F57C00" }, // cam đậm
+  { label: "СУПЕРПРИЗ", color: "#FF1744" }, // đỏ noen
+  { label: "ПЕРВОЕ МЕСТО", color: "#FFD600" }, // vàng sáng neon
+  { label: "ВТОРОЕ МЕСТО", color: "#00B0FF" }, // xanh sáng
+  { label: "ТРЕТЬЕ МЕСТО", color: "#00E676" }, // xanh lá sáng
+  { label: "ПООЩРИТЕЛЬНЫЙ ПРИЗ", color: "#FF9100" }, // cam sáng
 ];
 
 export type PrizeItem = {
@@ -11,7 +11,7 @@ export type PrizeItem = {
   color: string;
 };
 
-// Giải đặc biệt → СПЕЦИАЛЬНОЕ МЕСТО
+// Giải đặc biệt → СУПЕРПРИЗ
 // Giải nhất → ПЕРВОЕ МЕСТО
 // Giải nhì → ВТОРОЕ МЕСТО
 // Giải ba → ТРЕТЬЕ МЕСТО

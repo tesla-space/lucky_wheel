@@ -10,23 +10,28 @@
   border-radius: 50%;
   transform: translate(-50%, -50%);
 
-  /*lõi màu (QUAN TRỌNG NHẤT) */
+  /*lõi màu (QUAN TRỌNG NHẤT) 
+  Nếu không ok thì mở bg này lên
   background: #ff00cc;
+  */
+  background: radial-gradient(circle, #ffffff 15%, #ff00cc 60%, #b0008a 100%);
 
   /*glow nhẹ thôi */
   box-shadow:
-    0 0 2px #ff4fd8,
-    0 0 6px #ff4fd8;
+    0 0 2px #ff00cc,
+    0 0 4px #ff00cc;
 
-  animation: blink 0.9s infinite alternate;
+  animation: blink 0.7s infinite alternate;
   filter: brightness(1.1);
 }
 
 @keyframes blink {
   0% {
     opacity: 1;
+    transform: translate(-50%, -50%) scale(1);
   }
   100% {
-    opacity: 0.2;
+    opacity: 0.4;
+    transform: translate(-50%, -50%) scale(0.85);
   }
 }

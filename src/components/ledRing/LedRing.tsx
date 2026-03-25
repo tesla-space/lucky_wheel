@@ -16,7 +16,7 @@ export default function LedRing({ wheelSize }: Props) {
   const leds = Array.from({ length: LED_COUNT });
 
   // Kích thước LED co theo wheelSize, nhưng giữ tỉ lệ desktop & mobile
-  const ledSize = Math.max(5, wheelSize * 0.028);
+  const ledSize = Math.max(5, wheelSize * 0.035);
   //const ledSize = 10; // tối thiểu 5px
 
   return (

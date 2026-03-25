@@ -1,12 +1,10 @@
 import { useRef } from "react";
 import { PRIZES } from "../constants/prizes";
 
-// export type PrizeType = "GIẢI NHẤT" | "GIẢI NHÌ" | "GIẢI BA" | "KHUYẾN KHÍCH";
-
 export type PrizeType = (typeof PRIZES)[number]["label"];
 /* cấu hình số lượng giải */
 const PRIZE_CONFIG: Record<PrizeType, number> = {
-  "СПЕЦИАЛЬНОЕ МЕСТО": 1,
+  СУПЕРПРИЗ: 1,
   "ПЕРВОЕ МЕСТО": 1,
   "ВТОРОЕ МЕСТО": 2,
   "ТРЕТЬЕ МЕСТО": 3,
@@ -30,49 +28,33 @@ export default function useLuckyWheel() {
   const numberPool = useRef<number[] | null>(null);
   const prizePool = useRef<PrizeType[] | null>(null);
 
-  /* khởi tạo pool số (1 → 130) */
+  /* khởi tạo pool số (001 → 086) */
   if (!numberPool.current) {
-    const nums = Array.from({ length: 81 }, (_, i) => i + 1);
+    const nums = Array.from({ length: 86 }, (_, i) => i + 1);
 
     numberPool.current = shuffle(nums);
   }
 
   if (!prizePool.current) {
-    const khuyenKhich = Array(PRIZE_CONFIG["ПООЩРИТЕЛЬНЫЙ ПРИЗ"]).fill(
+    const consolationPrize = Array(PRIZE_CONFIG["ПООЩРИТЕЛЬНЫЙ ПРИЗ"]).fill(
       "ПООЩРИТЕЛЬНЫЙ ПРИЗ",
     );
-    const giaiBa = Array(PRIZE_CONFIG["ТРЕТЬЕ МЕСТО"]).fill("ТРЕТЬЕ МЕСТО");
-    const giaiNhi = Array(PRIZE_CONFIG["ВТОРОЕ МЕСТО"]).fill("ВТОРОЕ МЕСТО");
-    const giaiNhat = Array(PRIZE_CONFIG["ПЕРВОЕ МЕСТО"]).fill("ПЕРВОЕ МЕСТО");
-    const dacBiet = Array(PRIZE_CONFIG["СПЕЦИАЛЬНОЕ МЕСТО"]).fill(
-      "СПЕЦИАЛЬНОЕ МЕСТО",
+    const thirdPrize = Array(PRIZE_CONFIG["ТРЕТЬЕ МЕСТО"]).fill("ТРЕТЬЕ МЕСТО");
+    const secondPrize = Array(PRIZE_CONFIG["ВТОРОЕ МЕСТО"]).fill(
+      "ВТОРОЕ МЕСТО",
     );
+    const firstPrize = Array(PRIZE_CONFIG["ПЕРВОЕ МЕСТО"]).fill("ПЕРВОЕ МЕСТО");
+    const specialPrize = Array(PRIZE_CONFIG["СУПЕРПРИЗ"]).fill("СУПЕРПРИЗ");
 
     //QUAN TRỌNG: đảo ngược vì dùng pop()
     prizePool.current = [
-      ...dacBiet,
-      ...giaiNhat,
-      ...giaiNhi,
-      ...giaiBa,
-      ...khuyenKhich,
+      ...specialPrize,
+      ...firstPrize,
+      ...secondPrize,
+      ...thirdPrize,
+      ...consolationPrize,
     ];
   }
-
-  /* khởi tạo pool giải */
-  // if (!prizePool.current) {
-  //   const prizes: PrizeType[] = Object.entries(PRIZE_CONFIG).flatMap(
-  //     ([prize, count]) => Array(count).fill(prize as PrizeType),
-  //   );
-
-  //   // 1. Tách GIẢI NHẤT (mới)
-  //   const firstIndex = prizes.findIndex((p) => p === "GIẢI NHẤT");
-  //   const firstPrize = prizes.splice(firstIndex, 1)[0]; // lấy ra 1 giải nhất
-
-  //   // 2. Shuffle các giải còn lại (mới)
-  //   const shuffled = shuffle(prizes);
-  //   prizePool.current = [firstPrize, ...shuffled];
-  //   //prizePool.current = shuffle(prizes); đây là code cũ chưa cho giải nhất lên đầu
-  // }
 
   const draw = () => {
     const numbers = numberPool.current!;
@@ -95,8 +77,26 @@ export default function useLuckyWheel() {
   return { draw };
 }
 
-// Giải đặc biệt → СПЕЦИАЛЬНОЕ МЕСТО
+// Giải đặc biệt → СУПЕРПРИЗ
 // Giải nhất → ПЕРВОЕ МЕСТО
 // Giải nhì → ВТОРОЕ МЕСТО
 // Giải ba → ТРЕТЬЕ МЕСТО
 // Giải khuyến khích → ПООЩРИТЕЛЬНЫЙ ПРИЗ
+
+/* khởi tạo pool giải */
+// if (!prizePool.current) {
+//   const prizes: PrizeType[] = Object.entries(PRIZE_CONFIG).flatMap(
+//     ([prize, count]) => Array(count).fill(prize as PrizeType),
+//   );
+
+//   // 1. Tách GIẢI NHẤT (mới)
+//   const firstIndex = prizes.findIndex((p) => p === "GIẢI NHẤT");
+//   const firstPrize = prizes.splice(firstIndex, 1)[0]; // lấy ra 1 giải nhất
+
+//   // 2. Shuffle các giải còn lại (mới)
+//   const shuffled = shuffle(prizes);
+//   prizePool.current = [firstPrize, ...shuffled];
+//   //prizePool.current = shuffle(prizes); đây là code cũ chưa cho giải nhất lên đầu
+// }
+
+// export type PrizeType = "GIẢI NHẤT" | "GIẢI NHÌ" | "GIẢI BA" | "KHUYẾN KHÍCH";

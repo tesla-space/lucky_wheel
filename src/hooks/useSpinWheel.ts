@@ -20,18 +20,14 @@ export default function useSpinWheel() {
   const [history, setHistory] = useState<{ number: number; prize: string }[]>(
     [],
   );
-
   const { draw } = useLuckyWheel();
-
   // PRELOAD AUDIO
 
   useEffect(() => {
     const audio = new Audio(spinSound);
-
     audio.loop = true;
     audio.volume = 0.6;
     audio.preload = "auto";
-
     // warm-up để tránh bị delay / bị chặn
     audio
       .play()
@@ -40,7 +36,6 @@ export default function useSpinWheel() {
         audio.currentTime = 0;
       })
       .catch(() => {});
-
     spinAudioRef.current = audio;
   }, []);
 
@@ -69,17 +64,13 @@ export default function useSpinWheel() {
         requestAnimationFrame(frame);
       }
     };
-
     frame();
   };
 
   // SPIN LOGIC
-
   const spin = () => {
     if (spinning) return;
-
     setResult(null);
-
     if (resultTimerRef.current) {
       clearTimeout(resultTimerRef.current);
     }
@@ -101,7 +92,6 @@ export default function useSpinWheel() {
     stopRef.current = false;
 
     // PLAY AUDIO (INSTANT)
-
     if (spinAudioRef.current) {
       const audio = spinAudioRef.current;
       audio.currentTime = 0; // Đưa audio về lại giây 0 phát lại từ đầu
@@ -110,38 +100,14 @@ export default function useSpinWheel() {
       });
     }
     // ===== code cũ ======
-    // === TÍNH GÓC QUAY VÀ KIM CHỈ VÀO GIẢI THƯỞNG ===
-
-    // const prizeMap: Record<string, number> = {
-    //   "GIẢI NHẤT": 0,
-    //   "GIẢI NHÌ": 1,
-    //   "GIẢI BA": 2,
-    //   "KHUYẾN KHÍCH": 3,
-    // };
-
-    // const prizeIndex = prizeMap[prize];
-
-    // const sectorCount = 4;
-    // const anglePerSector = 360 / sectorCount;
 
     const prizeIndex = PRIZES.findIndex((p) => p.label === prize); // mới
-
     const sectorCount = PRIZES.length; // mới
     const anglePerSector = 360 / sectorCount; // mới
-
     const pointerAngle = 270;
-
-    // const margin = 12;
-
-    // const randomOffset =
-    //   Math.random() * (anglePerSector - margin * 2) -
-    //   (anglePerSector / 2 - margin);
-
     const safePadding = anglePerSector * 0.2; // mới
-
     const randomOffset =
       (Math.random() - 0.5) * (anglePerSector - safePadding * 2); // mới
-
     const sectorCenter = prizeIndex * anglePerSector + anglePerSector / 2;
     let targetAngle = pointerAngle - sectorCenter + randomOffset;
     targetAngle = (targetAngle + 360) % 360;
@@ -150,12 +116,9 @@ export default function useSpinWheel() {
     // đây là tạo quay mới
     if (wheelRef.current) {
       const current = rotationRef.current;
-
       const normalized = current % 360;
       const delta = targetAngle - normalized;
-
       const finalRotation = current + extraSpin + delta;
-
       rotationRef.current = finalRotation;
 
       // RESET trước
@@ -169,24 +132,7 @@ export default function useSpinWheel() {
       wheelRef.current.style.transition =
         "transform 10s cubic-bezier(0.22, 1, 0.36, 1)";
       wheelRef.current.style.transform = `translateZ(0) rotate(${finalRotation}deg)`;
-
-      //wheelRef.current.style.transform = `translateZ(0) rotate(${finalRotation}deg)`;
     }
-
-    // ===== Đây là cũ =====
-    // setRotation((prev) => {
-    //   const normalized = prev % 360;s
-    //   const delta = targetAngle - normalized;
-
-    //   return prev + extraSpin + delta;
-    // });
-
-    // ==== HIỆU ỨNG SỐ CHẠY (cũ) =======
-    // const roll = setInterval(() => {
-    //   if (!stopRef.current) {
-    //     setNumber(Math.floor(Math.random() * 130) + 1);
-    //   }
-    // }, 60);
 
     // ====== Hiệu ứng số chạy mới ====
     let animationId: number;
@@ -242,3 +188,18 @@ export default function useSpinWheel() {
     history,
   };
 }
+
+// ==== HIỆU ỨNG SỐ CHẠY (cũ) =======
+// const roll = setInterval(() => {
+//   if (!stopRef.current) {
+//     setNumber(Math.floor(Math.random() * 130) + 1);
+//   }
+// }, 60);
+
+// ===== Đây là cũ =====
+// setRotation((prev) => {
+//   const normalized = prev % 360;s
+//   const delta = targetAngle - normalized;
+
+//   return prev + extraSpin + delta;
+// });
