@@ -30,7 +30,7 @@ export default function useLuckyWheel() {
 
   /* khởi tạo pool số (001 → 086) */
   if (!numberPool.current) {
-    const nums = Array.from({ length: 86 }, (_, i) => i + 1);
+    const nums = Array.from({ length: 150 }, (_, i) => i + 1);
 
     numberPool.current = shuffle(nums);
   }
