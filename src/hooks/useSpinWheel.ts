@@ -8,10 +8,10 @@ const RESULT_DURATION = 10000;
 
 export default function useSpinWheel() {
   //const [rotation, setRotation] = useState(0); // cũ
-  const rotationRef = useRef(0); // mới
-  const wheelRef = useRef<HTMLDivElement | null>(null); // mới
-  const [number, setNumber] = useState(0);
-  const [spinning, setSpinning] = useState(false);
+  const rotationRef = useRef(0); // lưu góc quay hiện tại (KHÔNG render lại UI)
+  const wheelRef = useRef<HTMLDivElement | null>(null); //trỏ trực tiếp DOM để điều khiển CSS
+  const [number, setNumber] = useState(0); // hiển thị số trúng giải & random số innerWheel
+  const [spinning, setSpinning] = useState(false); // quay
   const [result, setResult] = useState<string | null>(null);
 
   const stopRef = useRef(false);
@@ -121,32 +121,33 @@ export default function useSpinWheel() {
       const finalRotation = current + extraSpin + delta;
       rotationRef.current = finalRotation;
 
-      // RESET trước
+      // None: dùng để tắt enimation cũ, tránh nối gây giật
       wheelRef.current.style.transition = "none";
       wheelRef.current.style.transform = `translateZ(0) rotate(${normalized}deg)`;
 
-      // force reflow
+      // đây là dòng quan trọng chống rung, vì nó ép browser render từng bước riêng biệt (không gộp)
       void wheelRef.current.offsetHeight;
 
-      // apply animation
+      // translateZ(0) GPU tăng mượt
       wheelRef.current.style.transition =
         "transform 10s cubic-bezier(0.22, 1, 0.36, 1)";
       wheelRef.current.style.transform = `translateZ(0) rotate(${finalRotation}deg)`;
     }
 
     // ====== Hiệu ứng số chạy mới ====
-    let animationId: number;
+    let animationId: number; // Id của animationFrame
     let lastTime = 0;
     const roll = (time: number) => {
       if (stopRef.current) return;
       // throttle để tránh render quá nhiều
       if (time - lastTime > 80) {
+        //chỉ update mỗi ~80ms
         setNumber(Math.floor(Math.random() * 130) + 1);
-        lastTime = time;
+        lastTime = time; // cập nhật thời gian để lần sau tính khoảng cách
       }
-      animationId = requestAnimationFrame(roll);
+      animationId = requestAnimationFrame(roll); // loop liên tục gióng setIntervel
     };
-    animationId = requestAnimationFrame(roll);
+    animationId = requestAnimationFrame(roll); // Khởi động animation
 
     //  KẾT THÚC SPIN
 
